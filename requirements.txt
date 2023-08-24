@@ -1,0 +1,10 @@
+numpy
+pandas
+datetime
+tqdm
+selenium
+EdgeGPT
+random_word
+
+anthropic
+langchain

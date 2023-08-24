@@ -1,0 +1,168 @@
+code,description
+"import csv
+from statistics import mean, stdev
+
+data = []
+with open('data.csv') as csvfile:
+    reader = csv.reader(csvfile)
+    for row in reader:
+        data.append(float(row[0]))
+        
+mean_val = mean(data)
+std_dev = stdev(data)
+
+print(f'The mean of the data is {mean_val}') 
+print(f'The standard deviation of the data is {std_dev}')","This code first imports the csv module to read from a CSV file and the statistics module to calculate the mean and standard deviation. It opens a file called 'data.csv', reads in each row as a list, converts the first element to a float, and appends it to a list called data. 
+
+It then calculates the mean and standard deviation of the data list using the imported functions. Finally, it prints out the mean and standard deviation in a formatted string.
+
+This demonstrates reading data from a file, processing the data, using statistics functions, and printing output."
+"def matrix_multiply(matrix1, matrix2):
+    """"""Multiply two matrices and return the result""""""
+    result = [[0 for j in range(len(matrix2[0]))] for i in range(len(matrix1))]
+    for i in range(len(matrix1)):
+        for j in range(len(matrix2[0])):
+            for k in range(len(matrix2)):
+                result[i][j] += matrix1[i][k] * matrix2[k][j]
+    return result","This function takes two matrices represented as 2D lists, multiplies them together, and returns the result matrix. It uses nested for loops to iterate through the rows and columns of the input matrices and perform the multiplication on each element. The result matrix is pre-allocated with 0's and then populated in the loops. This avoids creating a new list for each iteration. Overall this demonstrates some good Python coding practices like using meaningful variable names, adding a docstring, and efficient list operations."
+"import time
+import hashlib
+
+def my_random():
+  t = str(time.time()).encode('utf-8')
+  seed = int(hashlib.sha256(t).hexdigest(), 16) % (10 ** 8)
+  return seed
+
+for i in range(5):
+  print(my_random() % 10)","This code generates 5 random numbers between 0-9 without using the random library. It uses the current timestamp, hashes it with sha256 to get a numeric seed value, and uses that to initialize a random number generator. The seed ensures we get different values each time. By taking the seed modulo 10**8, we restrict it to 8 digits to avoid overflow issues. The for loop prints 5 random values by taking the result modulo 10 to restrict it between 0-9."
+"import os
+
+def copy_file(source, destination):
+    """"""Copy the contents of a file from source to destination""""""
+    with open(source, 'r') as source_file:
+        contents = source_file.read()
+
+    with open(destination, 'w') as dest_file:
+        dest_file.write(contents)
+
+if __name__ == '__main__':
+    source_path = 'source.txt'
+    dest_path = 'dest.txt'
+
+    if os.path.exists(dest_path):
+        print(f'{dest_path} already exists, deleting...')
+        os.remove(dest_path)
+
+    print('Copying contents from source to destination...') 
+    copy_file(source_path, dest_path)
+
+    print('Done!')","This code snippet demonstrates opening files in read and write mode, reading file contents, writing to a file, using conditionals and functions to improve code structure and reusability. It copies the contents from one file to another after checking that the destination file doesn't already exist. The __main__ block allows it to be run as a standalone"
+"from PIL import Image
+import numpy as np
+
+def convert_to_grayscale(input_image):
+    """"""Converts an RGB image to grayscale
+    
+    Args:
+        input_image (numpy.ndarray): RGB image
+    
+    Returns:
+        numpy.ndarray: Grayscale version of the image
+    """"""
+    
+    img = Image.fromarray(input_image)
+    gray_image = img.convert('L')
+    return np.array(gray_image)
+
+def resize_image(input_image, new_width, new_height):
+    """"""Resizes an image to the given width and height
+    
+    Args:
+        input_image (numpy.ndarray): Image to resize
+        new_width (int): Desired width in pixels
+        new_height (int): Desired height in pixels
+        
+    Returns:
+        numpy.ndarray: Resized image
+    """"""
+    
+    img = Image.fromarray(input_image)
+    resized_img = img.resize((new_width, new_height))
+    return np.array(resized_img)","This code defines two simple image processing functions - one to convert an RGB image to grayscale, and"
+"import requests
+from bs4 import BeautifulSoup
+
+url = 'https://example.com'
+
+def scrape_page(url):
+    """"""Scrapes a web page and extracts all text""""""
+    
+    # Make a request to the website
+    response = requests.get(url)
+    
+    # Check that the request was successful
+    if response.status_code != 200:
+        print('Error accessing website')
+        return
+    
+    # Parse HTML using Beautiful Soup
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+    # Extract all paragraph text 
+    page_text = []
+    for paragraph in soup.find_all('p'):
+        page_text.append(paragraph.text)
+        
+    return ' '.join(page_text)
+
+print(scrape_page(url))","This code makes a request to a website URL, checks that the request was successful, parses the HTML using Beautiful Soup, extracts all the text from the <p> tags, and joins the text together to print out. It demonstrates making web requests, parsing HTML, and extracting text from a web page."
+"import requests
+from bs4 import BeautifulSoup
+
+url = 'https://example.com'
+
+def scrape_website(url):
+    """"""
+    Scrapes example.com and extracts all paragraph text
+    """"""
+    response = requests.get(url)
+    html = response.text
+    soup = BeautifulSoup(html, 'html.parser')
+    
+    paragraphs = []
+    for p in soup.find_all('p'):
+        paragraphs.append(p.text)
+        
+    return '\n'.join(paragraphs)
+
+if __name__ == '__main__':
+    paragraphs = scrape_website(url)
+    print(paragraphs)","This code makes a request to a website, parses the HTML using BeautifulSoup, extracts all <p> elements, gets the text from each one, and prints out all paragraph text joined together. It demonstrates using requests and BeautifulSoup for web scraping, as well as defining a reusable function, using __main__ and if name conditionals. Overall it shows some good practices like descriptive variable names, docstrings, and proper formatting."
+"def factorial(n):
+    """"""Calculate n! recursively""""""
+    if n <= 1:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+print(factorial(5))","This recursively calls the factorial function with decreasing n until the base case of n=1 is reached, at which point 1 is returned. Each recursive call multiplicatively accumulates the factorial value until the final result is returned. This code demonstrates recursive functions in Python without relying on imports or external libraries. The factorial calculation is a common example for recursion."
+"class FileParser:
+    """"""
+    Parses files and extracts key information.
+    """"""
+    
+    def __init__(self, file_path):
+        self.file_path = file_path
+        
+    def parse(self):
+        """"""
+        Parses the file and returns extracted data.
+        """"""
+        data = {}
+        with open(self.file_path, 'r') as f:
+            for line in f:
+                parts = line.split(':')
+                key = parts[0].strip()
+                value = parts[1].strip()
+                data[key] = value
+        return data","This code defines a FileParser class that takes in a file path and can parse the file to extract key-value pairs. It implements this via the parse() method which opens the file, loops through the lines splitting on ':', and builds a dictionary mapping keys to values extracted from the file contents. This demonstrates classes, methods, built-in file handling, strings, dictionaries and good code organization. The FileParser could be used as part of a larger application that needs to digest configuration files or other key-value based files."
