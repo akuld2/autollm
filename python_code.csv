@@ -24158,3 +24158,41 @@ if __name__ == '__main__':
         'Test Email',
         'This is a test email sent using Python!'
     )","This code demonstrates using the smtplib and email modules in Python to automatically send emails. It defines a send_email function that takes in sender/recipient email, subject, and body text as parameters. It then constructs an EmailMessage object, logs into an SMTP server, and sends the email. The main block shows an example usage sending a test email. This allows autom"
+"def sort_strings(strings):
+    """"""Sorts a list of strings alphabetically""""""
+    
+    strings.sort(key=str.lower)
+    
+    return strings","This function takes in a list of strings as input, calls the .sort() method on the list and passes str.lower as the key to sort the list alphabetically case-insensitively. It returns the now sorted list of strings.
+
+The code uses the built-in sort() method and lower() string method to sort the list in place. By using str.lower as the key, it will sort based on a case-insensitive alphabetical order. The docstring provides a brief explanation of what the function does.
+
+Overall, this demonstrates some good practices like using built-in functions, writing docstrings, sorting in place to avoid copying data, and returning values for reusability. The topic was randomly chosen to be a simple sorting algorithm."
+"import string
+
+def generate_random_string(length):
+    chars = string.ascii_lowercase + string.digits
+    result = ''
+    for i in range(length):
+        result += random.choice(chars) 
+    return result
+
+random_string = generate_random_string(10)
+print(random_string)","This code defines a function called generate_random_string that takes a length parameter. It concatenates a string of lowercase ASCII characters and digits. It then iterates length times, each time selecting a random character from the chars string and appending it to the result. This generates a random string of the given length. 
+
+The code then calls this function to generate a 10 character random string and prints it out. This demonstrates how to generate random data in Python without using the random module. The code is properly formatted and follows Python conventions. It includes a comment explaining what it does."
+"import string
+import secrets
+
+def generate_password(length=10):
+    alphabet = string.ascii_letters + string.digits + string.punctuation
+    password = ''.join(secrets.choice(alphabet) for i in range(length))
+    return password
+
+if __name__ == '__main__':
+    password = generate_password() 
+    print(password)","This code imports the string and secrets modules. It defines a generate_password function that takes a password length and generates a random password using the secrets module to randomly choose characters from the alphabet string containing letters, numbers and punctuation. It returns the generated password string. 
+
+The main block calls generate_password() with the default length of 10 and prints the result.
+
+This demonstrates good practices like using the secrets module for cryptographic randomness, defining reusable functions, default parameters and if__name__ guards. The password generation algorithm is extensible if more customization is needed."
