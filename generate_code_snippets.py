@@ -4,6 +4,7 @@ import csv
 from tqdm import tqdm
 from langchain.chat_models import ChatAnthropic
 from langchain.schema import AIMessage, HumanMessage, SystemMessage
+import pandas as pd
 
 def parse_snippet(message):
     def extract_code_and_description(message):
@@ -44,4 +45,5 @@ def generate_unique_snippets(n):
             parse_snippet(snippet)
             break
 
-generate_unique_snippets(10000)
+lencsv = len(pd.read_csv('python_code.csv'))
+generate_unique_snippets(10000 - lencsv)
